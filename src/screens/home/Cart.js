@@ -16,9 +16,6 @@ const theme = createTheme();
 
 function MyProducts({ cart, setCart }) {
   const history = useHistory();
-  const unlist = (e) => {
-    console.log(e.target);
-  };
 
   if (cart.length !== 0) {
     return (

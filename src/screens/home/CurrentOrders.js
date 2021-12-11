@@ -1,5 +1,7 @@
 import * as React from "react";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,8 +13,8 @@ import Paper from "@mui/material/Paper";
 import Toolbar from "@mui/material/Toolbar";
 const theme = createTheme();
 
-function MyProducts({ orders, setOrders }) {
-  if (orders.length !== 0) {
+function CurrentOrders({ currentOrders }) {
+  if (currentOrders.length !== 0) {
     return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -21,12 +23,12 @@ function MyProducts({ orders, setOrders }) {
           <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
             <Toolbar sx={{ display: "flex", justifyContent: "center" }}>
               <Typography variant="h4" color="inherit" noWrap>
-                My Orders
+                Active Orders
               </Typography>
             </Toolbar>
-            <Container sx={{ py: 3 }} maxWidth="lg">
+            <Container sx={{ py: 3 }} maxWidth="md">
               <Grid container spacing={2}>
-                {orders.map((card) => (
+                {currentOrders.map((card) => (
                   <Grid item key={card.id} id={card.id} xs={12} sm={6} md={4}>
                     <Card
                       sx={{
@@ -48,6 +50,9 @@ function MyProducts({ orders, setOrders }) {
                           {card.description}
                         </Typography>
                       </CardContent>
+                      <CardActions>
+                        <Button size="small">Unlist</Button>
+                      </CardActions>
                     </Card>
                   </Grid>
                 ))}
@@ -67,10 +72,10 @@ function MyProducts({ orders, setOrders }) {
           alignItems: "center",
         }}
       >
-        No products added...
+        No active orders...
       </Paper>
     );
   }
 }
 
-export default MyProducts;
+export default CurrentOrders;

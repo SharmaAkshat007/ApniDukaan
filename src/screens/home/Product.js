@@ -12,7 +12,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 const theme = createTheme();
 
-export default function Product({ products }) {
+export default function Product({ products, setView }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -55,8 +55,14 @@ export default function Product({ products }) {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">Buy</Button>
-                    <Button size="small">Add to Cart</Button>
+                    <Button
+                      size="small"
+                      onClick={() => {
+                        setView(1);
+                      }}
+                    >
+                      Add to Cart
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>

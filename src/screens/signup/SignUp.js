@@ -31,9 +31,20 @@ const theme = createTheme();
 
 export default function SignUp() {
   const history = useHistory();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push("signin");
+    const data = new FormData(event.currentTarget);
+    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!data.get("email").match(mailformat)) {
+      alert("Invalid email address...");
+    } else if (data.get("password") !== data.get("confirmPassword")) {
+      alert("Password and Confirm Password are not same...");
+    } else if (data.get("password").length <= 6) {
+      alert("Password length should be greater than 6...");
+    } else {
+      history.push("/signin");
+    }
   };
 
   return (

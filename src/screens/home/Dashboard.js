@@ -24,6 +24,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import AddIcon from "@mui/icons-material/Add";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+
 const myCards = [
   {
     id: 1,
@@ -44,6 +46,21 @@ const myCards = [
     image: "https://m.media-amazon.com/images/I/61wbIOMM-fL._SY606_.jpg",
     description:
       "SG SunnTonny Grade 5 English Willow Cricket Bat ( Size: Youth,Leather Ball )",
+    seller: "Akshat Sharma",
+    email: "akshat@gmail.com",
+    mobile: "xxxxx-xxxxx",
+  },
+];
+
+const placedOrders = [
+  {
+    id: 1,
+    name: "Mattress",
+    price: 700,
+    image:
+      "https://cdn.shopify.com/s/files/1/0532/7074/1168/products/Singlepremiummattress.jpg?v=1623668781",
+    description:
+      "Bring home the single size foam mattress with memory foam top and have a great night's sleep",
     seller: "Akshat Sharma",
     email: "akshat@gmail.com",
     mobile: "xxxxx-xxxxx",
@@ -222,6 +239,7 @@ function DashboardContent() {
   const [myProducts, setMyProducts] = React.useState(myCards);
   const [orders, setOrders] = React.useState(myOrders);
   const [cart, setCart] = React.useState(myCart);
+  const [currentOrders, setCurrentOrders] = React.useState(placedOrders);
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -340,6 +358,18 @@ function DashboardContent() {
                 </ListItemIcon>
                 <ListItemText primary="My Products" />
               </ListItem>
+
+              <ListItem
+                button
+                onClick={() => {
+                  setView(5);
+                }}
+              >
+                <ListItemIcon>
+                  <LocalShippingIcon />
+                </ListItemIcon>
+                <ListItemText primary="Active Orders" />
+              </ListItem>
             </div>
           </List>
         </Drawer>
@@ -368,6 +398,8 @@ function DashboardContent() {
               setProducts={setProducts}
               cart={cart}
               setCart={setCart}
+              currentOrders={currentOrders}
+              setCurrentOrders={setCurrentOrders}
             />
 
             <Box

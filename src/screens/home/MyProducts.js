@@ -14,10 +14,6 @@ import Toolbar from "@mui/material/Toolbar";
 const theme = createTheme();
 
 function MyProducts({ myProducts, setMyProducts }) {
-  const unlist = (e) => {
-    console.log(e.target);
-  };
-
   if (myProducts.length !== 0) {
     return (
       <ThemeProvider theme={theme}>
@@ -30,7 +26,7 @@ function MyProducts({ myProducts, setMyProducts }) {
                 My Products
               </Typography>
             </Toolbar>
-            <Container sx={{ py: 3 }} maxWidth="lg">
+            <Container sx={{ py: 3 }} maxWidth="md">
               <Grid container spacing={2}>
                 {myProducts.map((card) => (
                   <Grid item key={card.id} id={card.id} xs={12} sm={6} md={4}>

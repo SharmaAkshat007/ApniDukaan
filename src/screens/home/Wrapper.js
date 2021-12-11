@@ -5,6 +5,7 @@ import Orders from "./Orders";
 import Product from "./Product";
 import MyProducts from "./MyProducts";
 import Paper from "@mui/material/Paper";
+import CurrentOrders from "./CurrentOrders";
 export default function Wrapper({
   view,
   setView,
@@ -16,12 +17,14 @@ export default function Wrapper({
   setOrders,
   cart,
   setCart,
+  currentOrders,
+  setCurrentOrders,
 }) {
   console.log(orders);
   if (view === 0) {
     return (
       <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-        <Product products={products} />
+        <Product products={products} setView={setView} />
       </Paper>
     );
   } else if (view === 1) {
@@ -42,6 +45,8 @@ export default function Wrapper({
     );
   } else if (view === 4) {
     return <MyProducts myProducts={myProducts} setMyProducts={setMyProducts} />;
+  } else if (view === 5) {
+    return <CurrentOrders currentOrders={currentOrders} />;
   } else {
     return (
       <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
